@@ -178,25 +178,25 @@
         }
 
         // Google Analytics: Registruoja „Patinka“
-        function trackLike(item) {
+       function trackLikeTea(item) {
     gtag('event', 'like', {
-        'item_name': item,         // Pvz., „Arbata 1“
-        'category': 'Pakuotės',    // Galite pridėti kategoriją
-        'user_action': 'Patinka',  // Specifinė naudotojo veiksmo reikšmė
-        'value': 1
+        'item_name': item,       // Siunčiamas konkrečios nuotraukos pavadinimas
+        'category': 'Arbata',    // Kategorija
+        'value': 1               // Galite naudoti analizei (nebūtinas)
     });
-    console.log(`Like event sent for: ${item}`);
+    console.log(`Like event sent for tea: ${item}`);
+    alert(`Jūsų pasirinkta arbatos pakuotė: ${item}`);
 }
-        function trackLike(item) {
-            gtag('event', 'like', {
-                'event_category': 'Pakuotės pasirinkimas',
-                'event_label': item,
-                'value': 1
-            });
-            console.log(Like event sent for: ${item});
-            alert(Patinka pasirinkta: ${item});
-        }
-       
+
+function trackLikeSpice(item) {
+    gtag('event', 'like', {
+        'item_name': item,       // Siunčiamas konkrečios nuotraukos pavadinimas
+        'category': 'Prieskoniai', // Kategorija
+        'value': 1               // Galite naudoti analizei (nebūtinas)
+    });
+    console.log(`Like event sent for spice: ${item}`);
+    alert(`Jūsų pasirinkta prieskonių pakuotė: ${item}`);
+}
         // Google Analytics: Registruoja nuotraukos peržiūrą (didinimą)
         function trackImageView(item) {
             gtag('event', 'image_view', {
