@@ -179,6 +179,15 @@
 
         // Google Analytics: Registruoja „Patinka“
         function trackLike(item) {
+    gtag('event', 'like', {
+        'item_name': item,         // Pvz., „Arbata 1“
+        'category': 'Pakuotės',    // Galite pridėti kategoriją
+        'user_action': 'Patinka',  // Specifinė naudotojo veiksmo reikšmė
+        'value': 1
+    });
+    console.log(`Like event sent for: ${item}`);
+}
+        function trackLike(item) {
             gtag('event', 'like', {
                 'event_category': 'Pakuotės pasirinkimas',
                 'event_label': item,
