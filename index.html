@@ -183,6 +183,7 @@
     gtag('event', 'like', {
         'item_name': item,       // Siunčiamas konkrečios nuotraukos pavadinimas
         'category': 'Arbata',    // Kategorija
+        'user_action': 'Patinka',  // Naudotojo veiksmas
         'value': 1               // Galite naudoti analizei (nebūtinas)
     });
     console.log(`Like event sent for tea: ${item}`);
@@ -193,6 +194,7 @@ function trackLikeSpice(item) {
     gtag('event', 'like', {
         'item_name': item,       // Siunčiamas konkrečios nuotraukos pavadinimas
         'category': 'Prieskoniai', // Kategorija
+        'user_action': 'Patinka',  // Naudotojo veiksmas
         'value': 1               // Galite naudoti analizei (nebūtinas)
     });
     console.log(`Like event sent for spice: ${item}`);
