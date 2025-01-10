@@ -180,7 +180,8 @@ const likeCounts = {};
 
         // Google Analytics: Registruoja „Patinka“
        function trackLike(item, category) {
-            likeCounts[item] = (likeCounts[item] || 0) + 1;
+    likeCounts[item] = (likeCounts[item] || 0) + 1;
+           
     gtag('event', 'like', {
         'item_name': item,       // Siunčiamas konkrečios nuotraukos pavadinimas
         'category': category,    // Kategorija
