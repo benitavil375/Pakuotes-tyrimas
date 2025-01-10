@@ -129,15 +129,15 @@
     <div class="images">
         <div>
             <img src="tea1.png" alt="Arbata 1" onclick="trackImageView('Arbata 1'); openModal('tea1.png')">
-            <button class="like-button" onclick="trackLike('Arbata 1')">Patinka</button>
+            <button class="like-button" onclick="trackLike('Arbata 1','Arbata')">Patinka</button>
         </div>
         <div>
             <img src="tea2.png" alt="Arbata 2" onclick="trackImageView('Arbata 2'); openModal('tea2.png')">
-            <button class="like-button" onclick="trackLike('Arbata 2')">Patinka</button>
+            <button class="like-button" onclick="trackLike('Arbata 2','Arbata')">Patinka</button>
         </div>
         <div>
             <img src="tea3.png" alt="Arbata 3" onclick="trackImageView('Arbata 3'); openModal('tea3.png')">
-            <button class="like-button" onclick="trackLike('Arbata 3')">Patinka</button>
+            <button class="like-button" onclick="trackLike('Arbata 3','Arbata')">Patinka</button>
         </div>
     </div>
 
@@ -145,15 +145,15 @@
     <div class="images">
         <div>
             <img src="spice1.png" alt="Prieskoniai 1" onclick="trackImageView('Prieskoniai 1'); openModal('spice1.png')">
-            <button class="like-button" onclick="trackLike('Prieskoniai 1')">Patinka</button>
+            <button class="like-button" onclick="trackLike('Prieskoniai 1','Prieskoniai')">Patinka</button>
         </div>
         <div>
             <img src="spice2.png" alt="Prieskoniai 2" onclick="trackImageView('Prieskoniai 2'); openModal('spice2.png')">
-            <button class="like-button" onclick="trackLike('Prieskoniai 2')">Patinka</button>
+            <button class="like-button" onclick="trackLike('Prieskoniai 2','Prieskoniai')">Patinka</button>
         </div>
         <div>
             <img src="spice3.png" alt="Prieskoniai 3" onclick="trackImageView('Prieskoniai 3'); openModal('spice3.png')">
-            <button class="like-button" onclick="trackLike('Prieskoniai 3')">Patinka</button>
+            <button class="like-button" onclick="trackLike('Prieskoniai 3','Prieskoniai')">Patinka</button>
         </div>
     </div>
 
@@ -179,27 +179,19 @@
         }
 
         // Google Analytics: Registruoja „Patinka“
-       function trackLike(item) {
+       function trackLike(item, category) {
+            likeCounts[item] = (likeCounts[item] || 0) + 1;
     gtag('event', 'like', {
         'item_name': item,       // Siunčiamas konkrečios nuotraukos pavadinimas
-        'category': 'Arbata',    // Kategorija
+        'category': category,    // Kategorija
         'user_action': 'Patinka',  // Naudotojo veiksmas
-        'value': 1               // Galite naudoti analizei (nebūtinas)
+        'value': likeCounts[item]               // Galite naudoti analizei (nebūtinas)
     });
-    console.log(`Like event sent for tea: ${item}`);
-    alert(`Jūsų pasirinkta arbatos pakuotė: ${item}`);
+    console.log(`Like event sent for tea: ${category}: ${item}. Total likes: ${likeCounts[item]}`);
+    alert(`Jūsų pasirinkta arbatos pakuotė ${category}: ${item}`);
 }
 
-function trackLike(item) {
-    gtag('event', 'like', {
-        'item_name': item,       // Siunčiamas konkrečios nuotraukos pavadinimas
-        'category': 'Prieskoniai', // Kategorija
-        'user_action': 'Patinka',  // Naudotojo veiksmas
-        'value': 1               // Galite naudoti analizei (nebūtinas)
-    });
-    console.log(`Like event sent for spice: ${item}`);
-    alert(`Jūsų pasirinkta prieskonių pakuotė: ${item}`);
-}
+
         // Google Analytics: Registruoja nuotraukos peržiūrą (didinimą)
         function trackImageView(item) {
             gtag('event', 'image_view', {
