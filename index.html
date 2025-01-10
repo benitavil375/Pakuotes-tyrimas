@@ -184,13 +184,12 @@ const likeCounts = {};
            
     gtag('event', 'like', {
         'item_name': item,       // Siunčiamas konkrečios nuotraukos pavadinimas
-        'category': category,    // Kategorija
-        'user_action': 'Patinka',  // Naudotojo veiksmas
-        'value': likeCounts[item]               // Galite naudoti analizei (nebūtinas)
+        'event_category': category,    // Kategorija
+        'event_label': item,        // Tikslus nuotraukos pavadinimas, pvz., Arbata 1
+        'value': likeCounts[item]   // Vidinis paspaudimų skaičius
     });
-    console.log(`Like event sent for tea: ${category}: ${item}. Total likes: ${likeCounts[item]}`);
-    alert(`Jūsų pasirinkta ${category}: ${item}`);
-
+    console.log(`Like event sent for ${item}. Total likes: ${likeCounts[item]}`);
+    alert(`Jūsų pasirinkta: ${item}`);
 }
 
 
